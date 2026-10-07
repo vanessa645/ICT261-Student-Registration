@@ -142,6 +142,7 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: green;");
             title.setText(
                     "Registered Successfully: " + name +
                             " | ID: " + id +
