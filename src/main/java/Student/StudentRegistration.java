@@ -1,13 +1,14 @@
 package Student;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class StudentRegistration extends Application {
@@ -15,7 +16,11 @@ public class StudentRegistration extends Application {
     @Override
     public void start(Stage stage) {
 
-        VBox root = new VBox(10);
+        GridPane root = new GridPane();
+
+        root.setHgap(10);
+        root.setVgap(10);
+        root.setPadding(new Insets(20));
 
         Label title = new Label("Student Registration");
 
@@ -57,8 +62,10 @@ public class StudentRegistration extends Application {
         programBox.setPromptText("Select program");
 
         Button saveButton = new Button("Save");
+        Button clearButton = new Button("Clear");
 
         saveButton.setOnAction(event -> {
+
             String id = idField.getText();
             String name = nameField.getText();
             String email = emailField.getText();
@@ -108,8 +115,6 @@ public class StudentRegistration extends Application {
             );
         });
 
-        Button clearButton = new Button("Clear");
-
         clearButton.setOnAction(event -> {
             idField.clear();
             nameField.clear();
@@ -121,27 +126,33 @@ public class StudentRegistration extends Application {
             title.setText("Student Registration");
         });
 
-        root.getChildren().addAll(
-                title,
-                idLabel,
-                idField,
-                nameLabel,
-                nameField,
-                dobLabel,
-                dobPicker,
-                genderLabel,
-                genderBox,
-                emailLabel,
-                emailField,
-                phoneLabel,
-                phoneField,
-                programLabel,
-                programBox,
-                saveButton,
-                clearButton
-        );
+        root.add(title, 0, 0, 2, 1);
 
-        Scene scene = new Scene(root, 400, 600);
+        root.add(idLabel, 0, 1);
+        root.add(idField, 1, 1);
+
+        root.add(nameLabel, 0, 2);
+        root.add(nameField, 1, 2);
+
+        root.add(dobLabel, 0, 3);
+        root.add(dobPicker, 1, 3);
+
+        root.add(genderLabel, 0, 4);
+        root.add(genderBox, 1, 4);
+
+        root.add(emailLabel, 0, 5);
+        root.add(emailField, 1, 5);
+
+        root.add(phoneLabel, 0, 6);
+        root.add(phoneField, 1, 6);
+
+        root.add(programLabel, 0, 7);
+        root.add(programBox, 1, 7);
+
+        root.add(saveButton, 0, 8);
+        root.add(clearButton, 1, 8);
+
+        Scene scene = new Scene(root, 550, 450);
 
         stage.setTitle("Student Registration");
         stage.setScene(scene);
