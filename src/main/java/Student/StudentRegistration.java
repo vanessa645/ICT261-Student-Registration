@@ -18,6 +18,11 @@ public class StudentRegistration extends Application {
 
         Label title = new Label("Student Registration");
 
+        Label idLabel = new Label("Student ID:");
+
+        TextField idField = new TextField();
+        idField.setPromptText("Enter student ID");
+
         Label nameLabel = new Label("Student Name:");
 
         TextField nameField = new TextField();
@@ -36,7 +41,13 @@ public class StudentRegistration extends Application {
         Button saveButton = new Button("Save");
 
         saveButton.setOnAction(event -> {
+            String id = idField.getText();
             String name = nameField.getText();
+
+            if (id.isBlank()) {
+                title.setText("Student ID is required.");
+                return;
+            }
 
             if (name.isBlank()) {
                 title.setText("Name is required.");
@@ -48,6 +59,8 @@ public class StudentRegistration extends Application {
 
         root.getChildren().addAll(
                 title,
+                idLabel,
+                idField,
                 nameLabel,
                 nameField,
                 programLabel,
@@ -55,7 +68,7 @@ public class StudentRegistration extends Application {
                 saveButton
         );
 
-        Scene scene = new Scene(root, 400, 300);
+        Scene scene = new Scene(root, 400, 350);
 
         stage.setTitle("Student Registration");
         stage.setScene(scene);
