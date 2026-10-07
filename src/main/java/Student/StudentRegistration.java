@@ -101,7 +101,11 @@ public class StudentRegistration extends Application {
                 return;
             }
 
-            title.setText("Saved: " + name + " - " + program);
+            title.setText(
+                    "Registered: " + name +
+                            " | ID: " + id +
+                            " | Program: " + program
+            );
         });
 
         Button clearButton = new Button("Clear");
