@@ -109,6 +109,12 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            if (!email.contains("@") || !email.contains(".")) {
+                title.setText("Enter a valid email address.");
+                return;
+
+            }
+
             if (phone.isBlank()) {
                 title.setText("Phone number is required.");
                 return;
