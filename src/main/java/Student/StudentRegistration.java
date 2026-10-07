@@ -120,6 +120,11 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            if (!phone.matches("\\d+")) {
+                title.setText("Phone number must contain digits only.");
+                return;
+            }
+
             if (program == null) {
                 title.setText("Please select a program.");
                 return;
