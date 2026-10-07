@@ -43,6 +43,7 @@ public class StudentRegistration extends Application {
         saveButton.setOnAction(event -> {
             String id = idField.getText();
             String name = nameField.getText();
+            String program = programBox.getValue();
 
             if (id.isBlank()) {
                 title.setText("Student ID is required.");
@@ -54,7 +55,20 @@ public class StudentRegistration extends Application {
                 return;
             }
 
-            title.setText("Saved: " + name);
+            if (program == null) {
+                title.setText("Please select a program.");
+                return;
+            }
+
+            title.setText("Saved: " + name + " - " + program);
+        });
+        Button clearButton = new Button("Clear");
+
+        clearButton.setOnAction(event -> {
+            idField.clear();
+            nameField.clear();
+            programBox.setValue(null);
+            title.setText("Student Registration");
         });
 
         root.getChildren().addAll(
@@ -65,10 +79,11 @@ public class StudentRegistration extends Application {
                 nameField,
                 programLabel,
                 programBox,
-                saveButton
+                saveButton,
+                clearButton
         );
 
-        Scene scene = new Scene(root, 400, 350);
+        Scene scene = new Scene(root, 400, 400);
 
         stage.setTitle("Student Registration");
         stage.setScene(scene);
