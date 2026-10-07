@@ -7,8 +7,8 @@ repositories {
     mavenCentral()
 }
 
-javafx {
-    version = '12'
+javafx  {
+    version = '21'
     modules = [ 'javafx.controls' ]
 }
 
