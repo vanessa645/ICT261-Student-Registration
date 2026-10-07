@@ -25,6 +25,12 @@ public class StudentRegistration extends Application {
         Button saveButton = new Button("Save");
         saveButton.setOnAction(event -> {
             String name = nameField.getText();
+
+            if (name.isBlank()) {
+                title.setText("Name is required.");
+                return;
+            }
+
             title.setText("Saved: " + name);
         });
 
