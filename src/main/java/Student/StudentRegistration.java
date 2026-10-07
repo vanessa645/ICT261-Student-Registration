@@ -30,6 +30,16 @@ public class StudentRegistration extends Application {
         Label dobLabel = new Label("Date of Birth:");
         DatePicker dobPicker = new DatePicker();
 
+        Label genderLabel = new Label("Gender:");
+
+        ComboBox<String> genderBox = new ComboBox<>();
+        genderBox.getItems().addAll(
+                "Male",
+                "Female",
+                "Other"
+        );
+        genderBox.setPromptText("Select gender");
+
         Label programLabel = new Label("Program:");
 
         ComboBox<String> programBox = new ComboBox<>();
@@ -45,6 +55,7 @@ public class StudentRegistration extends Application {
         saveButton.setOnAction(event -> {
             String id = idField.getText();
             String name = nameField.getText();
+            String gender = genderBox.getValue();
             String program = programBox.getValue();
 
             if (id.isBlank()) {
@@ -62,6 +73,11 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            if (gender == null) {
+                title.setText("Please select a gender.");
+                return;
+            }
+
             if (program == null) {
                 title.setText("Please select a program.");
                 return;
@@ -76,6 +92,7 @@ public class StudentRegistration extends Application {
             idField.clear();
             nameField.clear();
             dobPicker.setValue(null);
+            genderBox.setValue(null);
             programBox.setValue(null);
             title.setText("Student Registration");
         });
@@ -88,13 +105,15 @@ public class StudentRegistration extends Application {
                 nameField,
                 dobLabel,
                 dobPicker,
+                genderLabel,
+                genderBox,
                 programLabel,
                 programBox,
                 saveButton,
                 clearButton
         );
 
-        Scene scene = new Scene(root, 400, 450);
+        Scene scene = new Scene(root, 400, 500);
 
         stage.setTitle("Student Registration");
         stage.setScene(scene);
