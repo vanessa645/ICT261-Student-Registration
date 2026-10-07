@@ -31,7 +31,6 @@ public class StudentRegistration extends Application {
         DatePicker dobPicker = new DatePicker();
 
         Label genderLabel = new Label("Gender:");
-
         ComboBox<String> genderBox = new ComboBox<>();
         genderBox.getItems().addAll(
                 "Male",
@@ -40,8 +39,11 @@ public class StudentRegistration extends Application {
         );
         genderBox.setPromptText("Select gender");
 
-        Label programLabel = new Label("Program:");
+        Label emailLabel = new Label("Email:");
+        TextField emailField = new TextField();
+        emailField.setPromptText("Enter email address");
 
+        Label programLabel = new Label("Program:");
         ComboBox<String> programBox = new ComboBox<>();
         programBox.getItems().addAll(
                 "ICT",
@@ -55,6 +57,7 @@ public class StudentRegistration extends Application {
         saveButton.setOnAction(event -> {
             String id = idField.getText();
             String name = nameField.getText();
+            String email = emailField.getText();
             String gender = genderBox.getValue();
             String program = programBox.getValue();
 
@@ -78,6 +81,11 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            if (email.isBlank()) {
+                title.setText("Email is required.");
+                return;
+            }
+
             if (program == null) {
                 title.setText("Please select a program.");
                 return;
@@ -93,6 +101,7 @@ public class StudentRegistration extends Application {
             nameField.clear();
             dobPicker.setValue(null);
             genderBox.setValue(null);
+            emailField.clear();
             programBox.setValue(null);
             title.setText("Student Registration");
         });
@@ -107,13 +116,15 @@ public class StudentRegistration extends Application {
                 dobPicker,
                 genderLabel,
                 genderBox,
+                emailLabel,
+                emailField,
                 programLabel,
                 programBox,
                 saveButton,
                 clearButton
         );
 
-        Scene scene = new Scene(root, 400, 500);
+        Scene scene = new Scene(root, 400, 550);
 
         stage.setTitle("Student Registration");
         stage.setScene(scene);
