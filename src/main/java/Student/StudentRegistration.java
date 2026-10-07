@@ -43,6 +43,10 @@ public class StudentRegistration extends Application {
         TextField emailField = new TextField();
         emailField.setPromptText("Enter email address");
 
+        Label phoneLabel = new Label("Phone Number:");
+        TextField phoneField = new TextField();
+        phoneField.setPromptText("Enter phone number");
+
         Label programLabel = new Label("Program:");
         ComboBox<String> programBox = new ComboBox<>();
         programBox.getItems().addAll(
@@ -58,6 +62,7 @@ public class StudentRegistration extends Application {
             String id = idField.getText();
             String name = nameField.getText();
             String email = emailField.getText();
+            String phone = phoneField.getText();
             String gender = genderBox.getValue();
             String program = programBox.getValue();
 
@@ -86,6 +91,11 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            if (phone.isBlank()) {
+                title.setText("Phone number is required.");
+                return;
+            }
+
             if (program == null) {
                 title.setText("Please select a program.");
                 return;
@@ -102,6 +112,7 @@ public class StudentRegistration extends Application {
             dobPicker.setValue(null);
             genderBox.setValue(null);
             emailField.clear();
+            phoneField.clear();
             programBox.setValue(null);
             title.setText("Student Registration");
         });
@@ -118,13 +129,15 @@ public class StudentRegistration extends Application {
                 genderBox,
                 emailLabel,
                 emailField,
+                phoneLabel,
+                phoneField,
                 programLabel,
                 programBox,
                 saveButton,
                 clearButton
         );
 
-        Scene scene = new Scene(root, 400, 550);
+        Scene scene = new Scene(root, 400, 600);
 
         stage.setTitle("Student Registration");
         stage.setScene(scene);
