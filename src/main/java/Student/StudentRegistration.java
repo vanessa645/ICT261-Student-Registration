@@ -161,7 +161,7 @@ public class StudentRegistration extends Application {
             genderBox.setValue(null);
             emailField.clear();
             phoneField.clear();
-            programBox.setValue(null);
+            programBox.setValue(null);title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
             title.setText("Student Registration");
         });
 
