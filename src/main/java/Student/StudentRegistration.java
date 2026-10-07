@@ -72,6 +72,9 @@ public class StudentRegistration extends Application {
         Button saveButton = new Button("Save");
         Button clearButton = new Button("Clear");
 
+        saveButton.setPrefWidth(100);
+        clearButton.setPrefWidth(100);
+
         saveButton.setStyle("-fx-font-weight: bold;");
         clearButton.setStyle("-fx-font-weight: bold;");
 
