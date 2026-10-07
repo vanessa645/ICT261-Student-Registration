@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -19,14 +20,15 @@ public class StudentRegistration extends Application {
         Label title = new Label("Student Registration");
 
         Label idLabel = new Label("Student ID:");
-
         TextField idField = new TextField();
         idField.setPromptText("Enter student ID");
 
         Label nameLabel = new Label("Student Name:");
-
         TextField nameField = new TextField();
         nameField.setPromptText("Enter student name");
+
+        Label dobLabel = new Label("Date of Birth:");
+        DatePicker dobPicker = new DatePicker();
 
         Label programLabel = new Label("Program:");
 
@@ -55,6 +57,11 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            if (dobPicker.getValue() == null) {
+                title.setText("Date of birth is required.");
+                return;
+            }
+
             if (program == null) {
                 title.setText("Please select a program.");
                 return;
@@ -62,11 +69,13 @@ public class StudentRegistration extends Application {
 
             title.setText("Saved: " + name + " - " + program);
         });
+
         Button clearButton = new Button("Clear");
 
         clearButton.setOnAction(event -> {
             idField.clear();
             nameField.clear();
+            dobPicker.setValue(null);
             programBox.setValue(null);
             title.setText("Student Registration");
         });
@@ -77,13 +86,15 @@ public class StudentRegistration extends Application {
                 idField,
                 nameLabel,
                 nameField,
+                dobLabel,
+                dobPicker,
                 programLabel,
                 programBox,
                 saveButton,
                 clearButton
         );
 
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 400, 450);
 
         stage.setTitle("Student Registration");
         stage.setScene(scene);
