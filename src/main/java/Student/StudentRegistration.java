@@ -140,9 +140,13 @@ public class StudentRegistration extends Application {
             }
 
             title.setText(
-                    "Registered: " + name +
+                    "Registered Successfully: " + name +
                             " | ID: " + id +
-                            " | Program: " + program
+                            " | DOB: " + dobPicker.getValue() +
+                            " | Gender: " + gender +
+                            " | Program: " + program +
+                            " | Email: " + email +
+                            " | Phone: " + phone
             );
         });
 
