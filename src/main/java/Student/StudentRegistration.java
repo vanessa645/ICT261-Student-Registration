@@ -103,6 +103,10 @@ public class StudentRegistration extends Application {
                 title.setText("Date of birth is required.");
                 return;
             }
+            if (dobPicker.getValue().isAfter(java.time.LocalDate.now())) {
+                title.setText("Date of birth cannot be in the future.");
+                return;
+            }
 
             if (gender == null) {
                 title.setText("Please select a gender.");
