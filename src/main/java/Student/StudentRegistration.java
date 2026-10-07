@@ -89,6 +89,11 @@ public class StudentRegistration extends Application {
                 return;
             }
 
+            if (!id.matches("\\d+")) {
+                title.setText("Student ID must contain digits only.");
+                return;
+            }
+
             if (name.isBlank()) {
                 title.setText("Name is required.");
                 return;
