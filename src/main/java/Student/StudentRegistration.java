@@ -23,17 +23,21 @@ public class StudentRegistration extends Application {
         root.setPadding(new Insets(20));
 
         Label title = new Label("Student Registration");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
 
         Label idLabel = new Label("Student ID:");
         TextField idField = new TextField();
         idField.setPromptText("Enter student ID");
+        idField.setPrefWidth(250);
 
         Label nameLabel = new Label("Student Name:");
         TextField nameField = new TextField();
         nameField.setPromptText("Enter student name");
+        nameField.setPrefWidth(250);
 
         Label dobLabel = new Label("Date of Birth:");
         DatePicker dobPicker = new DatePicker();
+        dobPicker.setPrefWidth(250);
 
         Label genderLabel = new Label("Gender:");
         ComboBox<String> genderBox = new ComboBox<>();
@@ -43,14 +47,17 @@ public class StudentRegistration extends Application {
                 "Other"
         );
         genderBox.setPromptText("Select gender");
+        genderBox.setPrefWidth(250);
 
         Label emailLabel = new Label("Email:");
         TextField emailField = new TextField();
         emailField.setPromptText("Enter email address");
+        emailField.setPrefWidth(250);
 
         Label phoneLabel = new Label("Phone Number:");
         TextField phoneField = new TextField();
         phoneField.setPromptText("Enter phone number");
+        phoneField.setPrefWidth(250);
 
         Label programLabel = new Label("Program:");
         ComboBox<String> programBox = new ComboBox<>();
@@ -60,9 +67,13 @@ public class StudentRegistration extends Application {
                 "Information Systems"
         );
         programBox.setPromptText("Select program");
+        programBox.setPrefWidth(250);
 
         Button saveButton = new Button("Save");
         Button clearButton = new Button("Clear");
+
+        saveButton.setStyle("-fx-font-weight: bold;");
+        clearButton.setStyle("-fx-font-weight: bold;");
 
         saveButton.setOnAction(event -> {
 
