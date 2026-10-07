@@ -80,7 +80,7 @@ public class StudentRegistration extends Application {
 
         saveButton.setOnAction(event -> {
 
-            String id = idField.getText();
+            String id = idField.getText().trim();
             String name = nameField.getText();
             String email = emailField.getText();
             String phone = phoneField.getText();
